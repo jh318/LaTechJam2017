@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour {
 		body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 		StartCoroutine("ReduceSprayDistance");
+		holySprayDistance = (sprayDistanceMax - sprayDistanceMin) / holySprayTime;
+		holySprayChange = sprayDistanceMax;
 
 	}
 
@@ -48,20 +50,26 @@ public class PlayerController : MonoBehaviour {
 		float aimVertical = Input.GetAxis ("RightStickY");
 		transform.right = new Vector2 (aimHorizontal, aimVertical);
 
-			if( Input.GetAxisRaw("RightTrigger") > 0)
+			//Check for Inputs
+		if( Input.GetAxisRaw("RightTrigger") > 0)
+		{
+			if(m_isAxisInUse == false)
 			{
-				if(m_isAxisInUse == false)
-				{
-					Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
-					m_isAxisInUse = true;
-				}
+				Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
+				m_isAxisInUse = true;
 			}
-			if ( Input.GetAxisRaw("RightTrigger") == 0)
-			{
-				Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
-				m_isAxisInUse = false;
-				waterSpray.Stop ();
-			}  
+		}
+		if ( Input.GetAxisRaw("RightTrigger") == 0)
+		{
+			Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
+			m_isAxisInUse = false;
+			waterSpray.Stop ();
+		}  
+		if (Input.GetKeyDown(KeyCode.JoystickButton1) && holySprayChange <= sprayDistanceMax) 
+		{
+			Debug.Log ("B Pressed");
+			holySprayChange += 1.0f;
+		}
 
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
 	}
@@ -77,12 +85,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	IEnumerator ReduceSprayDistance(){
-		holySprayDistance = (sprayDistanceMax - sprayDistanceMin) / holySprayTime;
-		holySprayChange = sprayDistanceMax;
-		for (float i = 0; i < holySprayTime && holySprayChange >= sprayDistanceMin; i += Time.deltaTime) {
+		while (isActiveAndEnabled) 
+		{
+			if(Input.GetAxisRaw("RightTrigger") > 0 && holySprayChange >= sprayDistanceMin)
+			{
 			holySprayChange -=  holySprayDistance;
 			//Debug.Log (holySprayChange);
-			yield return new WaitForSeconds(1);
+			}
+			yield return new WaitForSeconds(0.5f);
 		}
 	}
 
