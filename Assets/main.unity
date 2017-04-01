@@ -112,43 +112,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4494692504462760, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.5000001
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4494692504462760, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.4999999
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4494692504462760, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.5000001
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4494692504462760, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.4999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4494692504462760, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198626347027750724, guid: ab2d20a622012f44b9c5210c5877d548,
-        type: 2}
-      propertyPath: randomSeed
-      value: -11416470
-      objectReference: {fileID: 0}
-    - target: {fileID: 198626347027750724, guid: ab2d20a622012f44b9c5210c5877d548,
-        type: 2}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 198626347027750724, guid: ab2d20a622012f44b9c5210c5877d548,
-        type: 2}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198626347027750724, guid: ab2d20a622012f44b9c5210c5877d548,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab2d20a622012f44b9c5210c5877d548, type: 2}
@@ -470,6 +450,11 @@ Prefab:
         type: 2}
       propertyPath: speed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261098217700350, guid: e14327643267570489265d349e150df7,
+        type: 2}
+      propertyPath: enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e14327643267570489265d349e150df7, type: 2}

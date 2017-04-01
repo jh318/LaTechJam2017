@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 	public float holySprayTime = 10;
 	public ParticleSystem waterSpray;
 
-	private ParticleSystem waterObject;
+	private ParticleSystem waterSprayInstance;
 
 	private float holySprayDistance;
 	private float holySprayChange;
@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 	private SpriteRenderer playerSprite; 
 	private Rigidbody2D body;
 	private bool m_isAxisInUse = false;
+	private ParticleSystem ps;
+	public bool enabled;
 
 
 
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 		body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 		//StartCoroutine("ReduceSprayDistance");
+		ps = GetComponent<ParticleSystem>();
 
 	}
 
@@ -57,7 +60,15 @@ public class PlayerController : MonoBehaviour {
 				if(m_isAxisInUse == false)
 				{
 					Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
-					Debug.Log ("Right Trigger pressed");					
+					Debug.Log ("Right Trigger pressed");
+
+					/*waterSprayInstance = waterSpray;
+					Instantiate (
+					waterSprayInstance, 
+					gameObject.GetComponentInChildren<HeadingController> ().transform.position, 
+					Quaternion.identity
+					);*/
+					//waterSprayInstance.Play ();
 
 					m_isAxisInUse = true;
 				}
@@ -65,8 +76,12 @@ public class PlayerController : MonoBehaviour {
 			if ( Input.GetAxisRaw("RightTrigger") == 0)
 			{
 				Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
-				waterSpray.Stop();
+				//waterSprayInstance.Stop();
+				//var emission = ps.emission;
+			//emission.enabled = !(enabled);
 				m_isAxisInUse = false;
+			waterSpray.Stop ();
+
 			}  
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
 
@@ -76,7 +91,10 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate(){
 		if (Input.GetAxisRaw ("RightTrigger") > 0) {
 			sprayWater ();
-			waterSpray.Play();
+			waterSpray.Play ();
+			//waterSprayInstance.Play ();
+			//var emission = ps.emission;
+			//emission.enabled = enabled;
 		}
 			
 	}
