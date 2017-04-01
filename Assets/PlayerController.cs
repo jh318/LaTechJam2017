@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
 	public Transform visibleBody;
 	public string xAxis = "Horizontal";
 	public string yAxis = "Vertical";
+	public int holyForce = 10;
+	public float sprayDistanceMax = 10;
+	public float sprayDistanceMin = 3;
 
 
 	private SpriteRenderer playerSprite; 
@@ -36,10 +39,14 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate(){
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, transform.right);
+		RaycastHit2D hit = Physics2D.Raycast (
+			gameObject.GetComponentInChildren<HeadingController>().transform.position, 
+			transform.right,
+			sprayDistanceMax
+		);
 		if (hit.collider != null) {
 			Debug.Log ("hit");
-			hit.rigidbody.AddForce (transform.right * 10);
+			hit.rigidbody.AddForce (transform.right * holyForce);
 		}
 	}
 }
