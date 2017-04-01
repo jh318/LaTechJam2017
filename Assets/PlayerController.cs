@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	private ParticleSystem waterSprayInstance;
 
 	private float holySprayDistance;
-	private float holySprayChange;
+	private float holySprayChange = 10;
 	private bool m_isAxisInUse = false;
 
 	private SpriteRenderer playerSprite; 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		playerSprite = GetComponentInChildren<SpriteRenderer>();
 		body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
-		//StartCoroutine("ReduceSprayDistance");
+		StartCoroutine("ReduceSprayDistance");
 
 	}
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis(xAxis);
 		float moveVert = Input.GetAxis(yAxis);
 		body.velocity = new Vector3 (moveHorizontal, moveVert, 0) * speed;
-		waterSpray.startLifetime = sprayDistanceMax;
+		waterSpray.startLifetime = holySprayChange;
 
 
 		float aimHorizontal = Input.GetAxis ("RightStickX");
