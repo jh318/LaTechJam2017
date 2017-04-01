@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 
 	private SpriteRenderer playerSprite; 
 	private Rigidbody2D body;
+	private bool m_isAxisInUse = false;
+
 
 
 	private void Start()
@@ -40,10 +42,28 @@ public class PlayerController : MonoBehaviour {
 		//Debug.Log ("x" + aimHorizontal);
 		//Debug.Log ("y" + aimVertical);
 
-		if(Input.GetAxis ("RightTrigger") > 0){
-			Debug.Log ("Right Trigger pressed");
-		}
+		//if(Input.GetAxisRaw ("RightTrigger")!= 0){
+			//Debug.Log ("Right Trigger pressed");
+
+			if( Input.GetAxisRaw("RightTrigger") > 0)
+			{
+				if(m_isAxisInUse == false)
+				{
+					Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
+					Debug.Log ("Right Trigger pressed");
+					m_isAxisInUse = true;
+				}
+			}
+			if ( Input.GetAxisRaw("RightTrigger") == 0)
+			{
+				Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
+
+				m_isAxisInUse = false;
+			}  
+		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
+
 	}
+
 
 	void FixedUpdate(){
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
@@ -63,8 +83,12 @@ public class PlayerController : MonoBehaviour {
 		holySprayChange = sprayDistanceMax;
 		for (float i = 0; i < holySprayTime && holySprayChange >= sprayDistanceMin; i += Time.deltaTime) {
 			holySprayChange -=  holySprayDistance;
-			Debug.Log (holySprayChange);
+			//Debug.Log (holySprayChange);
 			yield return new WaitForSeconds(1);
 		}
+	}
+
+	void sprayWater(){
+		
 	}
 }
