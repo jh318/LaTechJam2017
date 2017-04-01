@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		playerSprite = GetComponentInChildren<SpriteRenderer>();
 		body = GetComponent<Rigidbody2D>();
-		StartCoroutine("ReduceSprayDistance");
+		Vector3 fwd = transform.TransformDirection (Vector3.forward);
+
+	//	StartCoroutine("ReduceSprayDistance");
 
 	}
 
@@ -66,16 +68,10 @@ public class PlayerController : MonoBehaviour {
 
 
 	void FixedUpdate(){
-		Vector3 fwd = transform.TransformDirection (Vector3.forward);
-		RaycastHit2D hit = Physics2D.Raycast (
-			gameObject.GetComponentInChildren<HeadingController>().transform.position, 
-			transform.right,
-			sprayDistanceMax
-		);
-		if (hit.collider != null) {
-			Debug.Log ("hit");
-			hit.rigidbody.AddForce (transform.right * holyForce);
+		if (Input.GetAxisRaw ("RightTrigger") > 0) {
+			sprayWater ();
 		}
+			
 	}
 
 	IEnumerator ReduceSprayDistance(){
@@ -89,6 +85,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void sprayWater(){
-		
+		RaycastHit2D hit = Physics2D.Raycast (
+			gameObject.GetComponentInChildren<HeadingController>().transform.position, 
+			transform.right,
+			sprayDistanceMax
+		);
+		if (hit.collider != null) {
+			Debug.Log ("hit");
+			hit.rigidbody.AddForce (transform.right * holyForce);
+		}
 	}
 }
