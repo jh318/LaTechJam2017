@@ -30,7 +30,16 @@ public class PlayerController : MonoBehaviour {
 		float aimHorizontal = Input.GetAxis ("RightStickX");
 		float aimVertical = Input.GetAxis ("RightStickY");
 		transform.right = new Vector2 (aimHorizontal, aimVertical);
-		Debug.Log ("x" + aimHorizontal);
-		Debug.Log ("y" + aimVertical);
+		//Debug.Log ("x" + aimHorizontal);
+		//Debug.Log ("y" + aimVertical);
+	}
+
+	void FixedUpdate(){
+		Vector3 fwd = transform.TransformDirection (Vector3.forward);
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, transform.right);
+		if (hit.collider != null) {
+			Debug.Log ("hit");
+			hit.rigidbody.AddForce (transform.right * 10);
+		}
 	}
 }
