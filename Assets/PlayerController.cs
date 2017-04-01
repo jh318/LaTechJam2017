@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour {
 	public float sprayDistanceMax = 10;
 	public float sprayDistanceMin = 3;
 	public float holySprayTime = 10;
+	public ParticleSystem waterSpray;
+
+	private ParticleSystem waterObject;
+
 	private float holySprayDistance;
 	private float holySprayChange;
 
@@ -26,8 +30,7 @@ public class PlayerController : MonoBehaviour {
 		playerSprite = GetComponentInChildren<SpriteRenderer>();
 		body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
-
-	//	StartCoroutine("ReduceSprayDistance");
+		//StartCoroutine("ReduceSprayDistance");
 
 	}
 
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis(xAxis);
 		float moveVert = Input.GetAxis(yAxis);
 		body.velocity = new Vector3 (moveHorizontal, moveVert, 0) * speed;
+		waterSpray.startLifetime = sprayDistanceMax;
+
 
 		float aimHorizontal = Input.GetAxis ("RightStickX");
 		float aimVertical = Input.GetAxis ("RightStickY");
@@ -52,14 +57,15 @@ public class PlayerController : MonoBehaviour {
 				if(m_isAxisInUse == false)
 				{
 					Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
-					Debug.Log ("Right Trigger pressed");
+					Debug.Log ("Right Trigger pressed");					
+
 					m_isAxisInUse = true;
 				}
 			}
 			if ( Input.GetAxisRaw("RightTrigger") == 0)
 			{
 				Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
-
+				waterSpray.Stop();
 				m_isAxisInUse = false;
 			}  
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
@@ -70,6 +76,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate(){
 		if (Input.GetAxisRaw ("RightTrigger") > 0) {
 			sprayWater ();
+			waterSpray.Play();
 		}
 			
 	}
