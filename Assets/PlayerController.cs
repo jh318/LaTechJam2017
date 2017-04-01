@@ -18,12 +18,11 @@ public class PlayerController : MonoBehaviour {
 
 	private float holySprayDistance;
 	private float holySprayChange;
+	private bool m_isAxisInUse = false;
 
 	private SpriteRenderer playerSprite; 
 	private Rigidbody2D body;
-	private bool m_isAxisInUse = false;
-	private ParticleSystem ps;
-	public bool enabled;
+
 
 
 
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour {
 		body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 		//StartCoroutine("ReduceSprayDistance");
-		ps = GetComponent<ParticleSystem>();
 
 	}
 
@@ -49,52 +47,31 @@ public class PlayerController : MonoBehaviour {
 		float aimHorizontal = Input.GetAxis ("RightStickX");
 		float aimVertical = Input.GetAxis ("RightStickY");
 		transform.right = new Vector2 (aimHorizontal, aimVertical);
-		//Debug.Log ("x" + aimHorizontal);
-		//Debug.Log ("y" + aimVertical);
-
-		//if(Input.GetAxisRaw ("RightTrigger")!= 0){
-			//Debug.Log ("Right Trigger pressed");
 
 			if( Input.GetAxisRaw("RightTrigger") > 0)
 			{
 				if(m_isAxisInUse == false)
 				{
 					Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
-					Debug.Log ("Right Trigger pressed");
-
-					/*waterSprayInstance = waterSpray;
-					Instantiate (
-					waterSprayInstance, 
-					gameObject.GetComponentInChildren<HeadingController> ().transform.position, 
-					Quaternion.identity
-					);*/
-					//waterSprayInstance.Play ();
-
 					m_isAxisInUse = true;
 				}
 			}
 			if ( Input.GetAxisRaw("RightTrigger") == 0)
 			{
 				Debug.Log("Trigger Reset" + Input.GetAxisRaw("RightTrigger"));
-				//waterSprayInstance.Stop();
-				//var emission = ps.emission;
-			//emission.enabled = !(enabled);
 				m_isAxisInUse = false;
-			waterSpray.Stop ();
-
+				waterSpray.Stop ();
 			}  
-		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
 
+		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
 	}
 
 
-	void FixedUpdate(){
+	void FixedUpdate()
+	{
 		if (Input.GetAxisRaw ("RightTrigger") > 0) {
 			sprayWater ();
 			waterSpray.Play ();
-			//waterSprayInstance.Play ();
-			//var emission = ps.emission;
-			//emission.enabled = enabled;
 		}
 			
 	}
