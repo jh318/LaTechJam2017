@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour {
 		transform.right = new Vector2 (aimHorizontal, aimVertical);
 		//Debug.Log ("x" + aimHorizontal);
 		//Debug.Log ("y" + aimVertical);
+
+		if(Input.GetAxis ("RightTrigger") > 0){
+			Debug.Log ("Right Trigger pressed");
+		}
 	}
 
 	void FixedUpdate(){
