@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour {
 	public int holyForce = 10;
 	public float sprayDistanceMax = 10;
 	public float sprayDistanceMin = 3;
-
+	public float holySprayTime = 10;
+	private float holySprayDistance;
+	private float holySprayChange;
 
 	private SpriteRenderer playerSprite; 
 	private Rigidbody2D body;
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		playerSprite = GetComponentInChildren<SpriteRenderer>();
 		body = GetComponent<Rigidbody2D>();
+		StartCoroutine("ReduceSprayDistance");
+
 	}
 
 
@@ -47,6 +51,16 @@ public class PlayerController : MonoBehaviour {
 		if (hit.collider != null) {
 			Debug.Log ("hit");
 			hit.rigidbody.AddForce (transform.right * holyForce);
+		}
+	}
+
+	IEnumerator ReduceSprayDistance(){
+		holySprayDistance = (sprayDistanceMax - sprayDistanceMin) / holySprayTime;
+		holySprayChange = sprayDistanceMax;
+		for (float i = 0; i < holySprayTime && holySprayChange >= sprayDistanceMin; i += Time.deltaTime) {
+			holySprayChange -=  holySprayDistance;
+			Debug.Log (holySprayChange);
+			yield return new WaitForSeconds(1);
 		}
 	}
 }

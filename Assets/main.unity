@@ -191,6 +191,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &763630289 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1882224959195572, guid: e14327643267570489265d349e150df7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1473736646}
+--- !u!114 &763630292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763630289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca42b523ba48af43a15ca8ac7ad3b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1456971699
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +347,26 @@ Prefab:
         type: 2}
       propertyPath: holyForce
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 58672665554461152, guid: e14327643267570489265d349e150df7,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58672665554461152, guid: e14327643267570489265d349e150df7,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212408028002100738, guid: e14327643267570489265d349e150df7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261098217700350, guid: e14327643267570489265d349e150df7,
+        type: 2}
+      propertyPath: sprayDistanceMax
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e14327643267570489265d349e150df7, type: 2}
