@@ -6,7 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
-		public void LoadScene(string scene){
-			SceneManager.LoadScene (scene);
+	public string sceneToLoad;	
+
+
+	void Update(){
+		if (Input.GetButtonDown ("Jump") || Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton7)) {
+			LoadScene (sceneToLoad);
 		}
+	}
+
+
+	public void LoadScene(string scene){
+		SceneManager.LoadScene (scene);
+	}
 }

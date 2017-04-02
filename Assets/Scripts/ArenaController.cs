@@ -9,7 +9,10 @@ public class ArenaController : MonoBehaviour {
 		Debug.Log ("Object left");
 		if (c.gameObject.GetComponent<PlayerFollower> ()) {
 			c.gameObject.SetActive (false);
+			//PlayerController.player.loseFollower();
 			AudioManager.PlayVariedEffect ("WilhelmScream");
+			PlayerController.player.followerCount--;
+
 		}
 	}
 }

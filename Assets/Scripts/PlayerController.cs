@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour {
 
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 	private bool m_isAxisInUse = false;
 	float aimHorizontal;
 	float aimVertical;
-	private int followerCount;
+	public int followerCount;
 
 	private SpriteRenderer playerSprite; 
 	//private Rigidbody2D body;
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 		if (player == null) {
 			player = this;
 		}
-	followerCount = followersList.Length;
+		followerCount = followersList.Length-1;
 
 	}
 
@@ -101,6 +103,11 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
+
+		if (followerCount <= 0) {
+			SceneManager.LoadScene ("EndGameMenu");
+		}
+
 	}
 
 
@@ -114,8 +121,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D c){
-		loseFollower (c);
-		AudioManager.PlayVariedEffect ("WilhelmScream");
+		if (c.gameObject.GetComponent<EnemyController> ()) {
+			loseFollower ();
+			AudioManager.PlayVariedEffect ("WilhelmScream");
+		}
 	}
 
 	IEnumerator ReduceSprayDistance(){
@@ -142,8 +151,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void loseFollower(Collision2D c){
-		if (c.gameObject.GetComponent<EnemyController>()){
+	public void loseFollower(){
 			for (int i = 0; i < followersList.Length; i++) {
 				if (followersList [i].gameObject.GetComponent<PlayerFollower> () && followersList [i].gameObject.GetComponent<PlayerFollower> ().isActiveAndEnabled) {
 					followersList [i].gameObject.SetActive (false);
@@ -153,11 +161,17 @@ public class PlayerController : MonoBehaviour {
 				}
 				if (followerCount <= 0) {
 					Debug.Log ("nobody left");
+					if (followerCount <= 0) {
+						StartCoroutine ("LostAllFollowers");
+					}
 				}
 			}
 		}
+
+	IEnumerator LostAllFollowers(){
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene ("EndGameMenu");
+
 	}
-
-
 
 }
