@@ -407,7 +407,7 @@ Prefab:
     - target: {fileID: 114261098217700350, guid: e14327643267570489265d349e150df7,
         type: 2}
       propertyPath: holyForce
-      value: 15
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 58672665554461152, guid: e14327643267570489265d349e150df7,
         type: 2}
@@ -478,6 +478,25 @@ Transform:
   m_PrefabParentObject: {fileID: 4216166782718146, guid: e14327643267570489265d349e150df7,
     type: 2}
   m_PrefabInternal: {fileID: 1473736646}
+--- !u!1 &1604869525 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1328343426109878, guid: 620bb7a83f308674f8af8fcafb4f30b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1618185142}
+--- !u!114 &1604869530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604869525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180e08fba0eb82c40b3e02b03fa59ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  lookAhead: 1
+  score: 0
 --- !u!1001 &1618185142
 Prefab:
   m_ObjectHideFlags: 0

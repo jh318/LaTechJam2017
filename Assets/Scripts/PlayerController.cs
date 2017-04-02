@@ -3,6 +3,21 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public static PlayerController player;
+
+	Rigidbody2D _body;
+	public Rigidbody2D body {
+		get{ 
+			if (_body == null) {
+				_body = GetComponent<Rigidbody2D> ();
+			}
+			return _body;
+		}
+	}
+
+
+
+
 
 	public float speed;
 	public Transform visibleBody;
@@ -21,15 +36,19 @@ public class PlayerController : MonoBehaviour {
 	private bool m_isAxisInUse = false;
 
 	private SpriteRenderer playerSprite; 
-	private Rigidbody2D body;
+	//private Rigidbody2D body;
+
+	void Awake(){
+		if (player == null) {
+			player = this;
+		}
+	}
 
 
-
-
-	private void Start()
+	void Start()
 	{
 		playerSprite = GetComponentInChildren<SpriteRenderer>();
-		body = GetComponent<Rigidbody2D>();
+		//body = GetComponent<Rigidbody2D>();
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 		StartCoroutine("ReduceSprayDistance");
 		holySprayDistance = (sprayDistanceMax - sprayDistanceMin) / holySprayTime;

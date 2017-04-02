@@ -152,6 +152,10 @@ MonoBehaviour:
   xAxis: Horizontal
   yAxis: Vertical
   holyForce: 7
+  sprayDistanceMax: 10
+  sprayDistanceMin: 3
+  holySprayTime: 10
+  waterSpray: {fileID: 0}
 --- !u!212 &212408028002100738
 SpriteRenderer:
   m_ObjectHideFlags: 1
