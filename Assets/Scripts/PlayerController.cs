@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 	public float sprayDistanceMin = 3;
 	public float holySprayTime = 10;
 	public ParticleSystem waterSpray;
+	public float sprayDegredationRate = 0.5f;
+	public float pumpRate = 1.0f;
 
 	private ParticleSystem waterSprayInstance;
 
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.JoystickButton1) && holySprayChange <= sprayDistanceMax) 
 		{
 			Debug.Log ("B Pressed");
-			holySprayChange += 1.0f;
+			holySprayChange += pumpRate;
 		}
 
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
@@ -124,7 +126,7 @@ public class PlayerController : MonoBehaviour {
 			holySprayChange -=  holySprayDistance;
 			//Debug.Log (holySprayChange);
 			}
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(sprayDegredationRate);
 		}
 	}
 
