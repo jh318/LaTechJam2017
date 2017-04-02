@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour {
 			if(m_isAxisInUse == false)
 			{
 				Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
+				AudioManager.PlayVariedEffect ("spray1SFX");
 				m_isAxisInUse = true;
 			}
 		}
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			Debug.Log ("B Pressed");
 			holySprayChange += pumpRate;
+			AudioManager.PlayVariedEffect ("pump1SFX");
 		}
 
 		Debug.Log ("RT " +Input.GetAxisRaw ("RightTrigger"));
