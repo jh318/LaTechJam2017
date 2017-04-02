@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainGameUIController : MonoBehaviour {
 
 
+
 	public Text followersAliveListText;
 	public Text followerAlive1;
 	public Text followerAlive2;
@@ -19,6 +20,8 @@ public class MainGameUIController : MonoBehaviour {
 	public Text followerDead3;
 	public Text followerDead4;
 	public Text followerDead5;
+
+	public Text timerUI;
 
 
 
@@ -34,20 +37,34 @@ public class MainGameUIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameManager.instance.noahAlive == false) {
+		timerUI.text = "Time 'til Ascension: " + Mathf.Round (GameManager.instance.timer);
+		if (GameManager.noahAlive == false) {
 			followerDead1.text = "Noah";
+			followerAlive1.gameObject.SetActive (false);
 		}
-		if (GameManager.instance.mosesAlive == false) {
+		if (GameManager.mosesAlive == false) {
 			followerDead2.text = "Moses";
+			followerAlive2.gameObject.SetActive (false);
+
 		}
-		if (GameManager.instance.methusalaAlive == false) {
+		if (GameManager.methusalaAlive == false) {
 			followerDead3.text = "Methusala";
+			followerAlive3.gameObject.SetActive (false);
+
 		}
-		if (GameManager.instance.abrahamAlive == false) {
+		if (GameManager.abrahamAlive == false) {
 			followerDead4.text = "Abraham";
+			followerAlive4.gameObject.SetActive (false);
+
 		}
-		if (GameManager.instance.davidAlive == false) {
+		if (GameManager.davidAlive == false) {
 			followerDead5.text = "David";
+			followerAlive5.gameObject.SetActive (false);
+
 		}
+
+
+
+
 	}
 }

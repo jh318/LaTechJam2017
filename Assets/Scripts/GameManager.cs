@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
 
 public class GameManager : MonoBehaviour {
 
@@ -12,11 +15,14 @@ public class GameManager : MonoBehaviour {
 	public GameObject abraham;
 	public GameObject david;
 
-	public bool noahAlive;
-	public bool mosesAlive;
-	public bool methusalaAlive;
-	public bool abrahamAlive;
-	public bool davidAlive;
+	public static bool noahAlive;
+	public static bool mosesAlive;
+	public static bool methusalaAlive;
+	public static bool abrahamAlive;
+	public static bool davidAlive;
+
+	public int demonsKilled = 0;
+	public float timer = 60.0f;
 
 	void Awake(){
 		if (instance == null) {
@@ -25,10 +31,19 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start () {
-		
+		demonsKilled = 0;
+		noahAlive = true;
+		mosesAlive = true;
+		methusalaAlive = true;
+		abrahamAlive = true;
+		davidAlive = true;
 	}
 	
 	void Update () {
+		timer -= Time.deltaTime;
+		if (timer <= 0) {
+			SceneManager.LoadScene ("EndGameMenu");
+		}
 		if (!noah.gameObject.GetComponent<PlayerFollower> ().isActiveAndEnabled) {
 			noahAlive = false;
 		}

@@ -17,6 +17,7 @@ public class ArenaController : MonoBehaviour {
 		if (c.gameObject.GetComponent<EnemyController> ()) {
 			c.gameObject.SetActive (false);
 			AudioManager.PlayEffect (AudioManager.instance.clips [Random.Range (3, 18)]);
+			GameManager.instance.demonsKilled++;
 		}
 	}
 }
