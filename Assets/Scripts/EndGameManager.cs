@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndGameManager : MonoBehaviour {
 
+	public Text saveCountText;
+
 	// Use this for initialization
 	void Start () {
-		
+		if (PlayerController.player.followerCount > 0) {
+			AudioManager.PlayVariedEffect ("applause7");
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameManager.noahAlive == false) {
-			gameObject.GetComponent<MainGameUIController> ().followerAlive1.gameObject.SetActive (false);
-		}
+		saveCountText.text = "Saved: " + PlayerController.player.followerCount;
+
 	}
 }
+
