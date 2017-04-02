@@ -14,5 +14,9 @@ public class ArenaController : MonoBehaviour {
 			PlayerController.player.followerCount--;
 
 		}
+		if (c.gameObject.GetComponent<EnemyController> ()) {
+			c.gameObject.SetActive (false);
+			AudioManager.PlayEffect (AudioManager.instance.clips [Random.Range (3, 18)]);
+		}
 	}
 }

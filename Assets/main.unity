@@ -183,11 +183,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4072547947996064, guid: 92f0692e9eda01e4aba4cfd4a96ca41f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.151009
+      value: -14.5
       objectReference: {fileID: 0}
     - target: {fileID: 4072547947996064, guid: 92f0692e9eda01e4aba4cfd4a96ca41f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15.7208395
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 4072547947996064, guid: 92f0692e9eda01e4aba4cfd4a96ca41f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -370,6 +370,28 @@ MonoBehaviour:
   autoStartMusic: 1
   clips:
   - {fileID: 8300000, guid: 17a1d58be9d7de243b7dafb8bd8aa1bd, type: 3}
+  - {fileID: 8300000, guid: 20f0f16aba45b15439e16fcc280d3df8, type: 3}
+  - {fileID: 8300000, guid: ccd7ba73f15eb7e448fea61a922438e2, type: 3}
+  - {fileID: 8300000, guid: 206b0181346b79f4fa87f78da95b0380, type: 3}
+  - {fileID: 8300000, guid: 56915e7ab4265cd48a45a2df05394e7e, type: 3}
+  - {fileID: 8300000, guid: a646ca8d6f05f9d4697df496d82ee2e4, type: 3}
+  - {fileID: 8300000, guid: 1be2f240c464fa94bbbf51b9b022044d, type: 3}
+  - {fileID: 8300000, guid: 25cea41e5f1a8714da596d1b13e5775c, type: 3}
+  - {fileID: 8300000, guid: f897ce929a2cb334fa44a65363d96623, type: 3}
+  - {fileID: 8300000, guid: 9fa65f906d7315848838fe0cbecdca7c, type: 3}
+  - {fileID: 8300000, guid: 0f28288352eddfd4d8da69f1e59cac8e, type: 3}
+  - {fileID: 8300000, guid: 17a1d58be9d7de243b7dafb8bd8aa1bd, type: 3}
+  - {fileID: 8300000, guid: a4458ef3ee33f184eb8e4a9e89fc16bd, type: 3}
+  - {fileID: 8300000, guid: 3701d62c7f4de7c46873a1ce7c36eac9, type: 3}
+  - {fileID: 8300000, guid: 4e0dd0abd259c5a44aa840879cb092df, type: 3}
+  - {fileID: 8300000, guid: a8bd940574a079a46b8563aa63c53204, type: 3}
+  - {fileID: 8300000, guid: 905ea956a7db1e64e9b933302581b992, type: 3}
+  - {fileID: 8300000, guid: c1b43ca9f8ad48c40b24a2a2fc79911b, type: 3}
+  - {fileID: 8300000, guid: 3e75f61ce4a972941a890ad13b1c480a, type: 3}
+  - {fileID: 8300000, guid: 23fbb1b9b596047498bf8101b2e0f7c6, type: 3}
+  - {fileID: 8300000, guid: aea180fc3e761ec498d21a07de8ea26a, type: 3}
+  - {fileID: 8300000, guid: 908a3ccafefefc140bdcbcef2fc65611, type: 3}
+  - {fileID: 8300000, guid: b7d1d26419b78bd41b9d28a9edac6c48, type: 3}
   mixers: []
   musicMixer: {fileID: 0}
   defaultSFXMixer: {fileID: 0}
@@ -452,6 +474,7 @@ MonoBehaviour:
   - {fileID: 564594715}
   - {fileID: 176884988}
   - {fileID: 121711977}
+  followerCount: 0
 --- !u!50 &460930133
 Rigidbody2D:
   serializedVersion: 4
