@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform visibleBody;
 	public string xAxis = "Horizontal";
 	public string yAxis = "Vertical";
+	public float rotationSpeed = 3;
 	public int holyForce = 10;
 	public float sprayDistanceMax = 10;
 	public float sprayDistanceMin = 3;
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour {
 	private float holySprayDistance;
 	private float holySprayChange = 10;
 	private bool m_isAxisInUse = false;
+	float aimHorizontal;
+	float aimVertical;
 
 	private SpriteRenderer playerSprite; 
 	//private Rigidbody2D body;
@@ -64,10 +67,20 @@ public class PlayerController : MonoBehaviour {
 		body.velocity = new Vector3 (moveHorizontal, moveVert, 0) * speed;
 		waterSpray.startLifetime = holySprayChange;
 
+		aimHorizontal = Input.GetAxis ("RightStickX");
+		aimVertical = Input.GetAxis ("RightStickY");
 
-		float aimHorizontal = Input.GetAxis ("RightStickX");
-		float aimVertical = Input.GetAxis ("RightStickY");
-		transform.right = new Vector2 (aimHorizontal, aimVertical);
+		if (aimHorizontal < 0) {
+			transform.Rotate (Vector3.forward * rotationSpeed);
+		}
+		if (aimHorizontal > 0) {
+			transform.Rotate (Vector3.forward * -rotationSpeed);
+		}
+			
+	
+		//transform.right = new Vector2 (aimHorizontal, aimVertical);
+
+
 
 			//Check for Inputs
 		if( Input.GetAxisRaw("RightTrigger") > 0)
