@@ -59,5 +59,7 @@ public class GameManager : MonoBehaviour {
 		if (!david.gameObject.GetComponent<PlayerFollower> ().isActiveAndEnabled) {
 			davidAlive = false;
 		}
+
+
 	}
 }
