@@ -14,11 +14,7 @@ public class PlayerController : MonoBehaviour {
 			return _body;
 		}
 	}
-
-
-
-
-
+		
 	public float speed;
 	public Transform visibleBody;
 	public string xAxis = "Horizontal";
@@ -31,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem waterSpray;
 	public float sprayDegredationRate = 0.5f;
 	public float pumpRate = 1.0f;
+	public GameObject[] followersList;
 
 	private ParticleSystem waterSprayInstance;
 
@@ -39,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 	private bool m_isAxisInUse = false;
 	float aimHorizontal;
 	float aimVertical;
+	private int followerCount;
 
 	private SpriteRenderer playerSprite; 
 	//private Rigidbody2D body;
@@ -47,6 +45,8 @@ public class PlayerController : MonoBehaviour {
 		if (player == null) {
 			player = this;
 		}
+	followerCount = followersList.Length;
+
 	}
 
 
@@ -78,12 +78,7 @@ public class PlayerController : MonoBehaviour {
 		if (aimHorizontal > 0) {
 			transform.Rotate (Vector3.forward * -rotationSpeed);
 		}
-			
-	
 		//transform.right = new Vector2 (aimHorizontal, aimVertical);
-
-
-
 			//Check for Inputs
 		if( Input.GetAxisRaw("RightTrigger") > 0)
 		{
@@ -118,6 +113,10 @@ public class PlayerController : MonoBehaviour {
 			
 	}
 
+	void OnCollisionExit2D(Collision2D c){
+		loseFollower (c);
+	}
+
 	IEnumerator ReduceSprayDistance(){
 		while (isActiveAndEnabled) 
 		{
@@ -141,4 +140,23 @@ public class PlayerController : MonoBehaviour {
 			hit.rigidbody.AddForce (transform.right * holyForce);
 		}
 	}
+
+	public void loseFollower(Collision2D c){
+		if (c.gameObject.GetComponent<EnemyController>()){
+			for (int i = 0; i < followersList.Length; i++) {
+				if (followersList [i].gameObject.GetComponent<PlayerFollower> () && followersList [i].gameObject.GetComponent<PlayerFollower> ().isActiveAndEnabled) {
+					followersList [i].gameObject.SetActive (false);
+					Debug.Log ("lost follower");
+					followerCount--;
+					break;
+				}
+				if (followerCount <= 0) {
+					Debug.Log ("nobody left");
+				}
+			}
+		}
+	}
+
+
+
 }
