@@ -218,6 +218,16 @@ Prefab:
       propertyPath: m_Name
       value: ArenaFire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 198688071424325224, guid: 9e55c463285ee694f884535b21bd5a0c,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198688071424325224, guid: 9e55c463285ee694f884535b21bd5a0c,
+        type: 2}
+      propertyPath: randomSeed
+      value: 785711903
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e55c463285ee694f884535b21bd5a0c, type: 2}
   m_IsPrefabParent: 0
@@ -500,6 +510,16 @@ Prefab:
     - target: {fileID: 1840917467655478, guid: 9e55c463285ee694f884535b21bd5a0c, type: 2}
       propertyPath: m_Name
       value: ArenaFire (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 198688071424325224, guid: 9e55c463285ee694f884535b21bd5a0c,
+        type: 2}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198688071424325224, guid: 9e55c463285ee694f884535b21bd5a0c,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1525606064
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e55c463285ee694f884535b21bd5a0c, type: 2}
@@ -973,7 +993,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456971699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -991,7 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1551442935}
-  offset: {x: 0, y: 0, z: -20}
+  offset: {x: 1, y: -1, z: -13}
 --- !u!4 &1551442935
 Transform:
   m_ObjectHideFlags: 0
