@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 		if (player == null) {
 			player = this;
 		}
-		followerCount = followersList.Length-1;
+		followerCount = followersList.Length;
 
 	}
 
