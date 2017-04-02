@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D c){
 		loseFollower (c);
+		AudioManager.PlayVariedEffect ("WilhelmScream");
 	}
 
 	IEnumerator ReduceSprayDistance(){

@@ -21,7 +21,7 @@ using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Paraphernalia.Components {
+
 public class AudioManager : MonoBehaviour {
 
 	public AudioClip music;
@@ -195,5 +195,4 @@ public class AudioManager : MonoBehaviour {
 		sourceA.Stop();
 		sourceB.volume = 1;
 	}
-}
 }

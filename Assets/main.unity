@@ -368,7 +368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 8300000, guid: e8203e7bf257250499d907ef4613eb27, type: 3}
   autoStartMusic: 1
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 17a1d58be9d7de243b7dafb8bd8aa1bd, type: 3}
   mixers: []
   musicMixer: {fileID: 0}
   defaultSFXMixer: {fileID: 0}
@@ -420,7 +421,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.40464354
+  m_Radius: 0.3813363
 --- !u!114 &460930132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +838,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.111778
+  orthographic size: 8.953369
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -858,7 +859,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456971699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -876,7 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1551442935}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: -50}
 --- !u!4 &1551442935
 Transform:
   m_ObjectHideFlags: 0
